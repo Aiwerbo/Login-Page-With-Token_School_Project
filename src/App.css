@@ -1,33 +1,207 @@
-.App {
+li{
+  list-style-type: none;
+  padding: 5px;
+  
+}
+ul{
+  margin: 0;
+  padding: 4px;
+}
+
+
+
+.mainContainer{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(80, 171, 80);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loginContainer{
+  position: absolute;
   text-align: center;
+  margin: 0;
+  padding: 20px; 
+  padding-top: 50px;
+  width: 500px;
+  height: 450px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  box-shadow: 4px 4px 18px -6px rgba(0,0,0,0.75);
+}
+#loggedIn{
+  padding-left: 20px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+#profileContainer{
+  position: absolute;
+  padding-left: 0px;
+  margin: 0;
+  
+  
+  width: 500px;
+  height: 250px;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -10%);
+  background-color: white;
+  box-shadow: 4px 4px 18px -6px rgba(0,0,0,0.75);
+}
+#todoHeader{
+  text-align: center;
+  color: rgb(41, 187, 41);
+  font-family: 'Indie Flower', cursive;
+}
+.logInHeader{
+  color: rgb(41, 187, 41);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+#contentContainer{
+  position: absolute;
+  height: 400px;
+  width: 500px;
+  
+  overflow: auto;
+  background-color: white;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  box-shadow: 4px 4px 18px -6px rgba(0,0,0,0.75);
+}
+
+
+
+.inputField{
+  width: 400px;
+  height: 30px;
+  padding: 20px;
+  margin: 10px;
+  border: 0;
+  background-color: rgb(244, 244, 244);
+  font-size: 16px;
+}
+.inputField:focus{
+  background-color: rgb(225, 225, 225);
+  outline: none;
+}
+
+.inputField:-webkit-autofill {
+  -webkit-box-shadow: inset 0 0 0px 9999px rgb(244, 244, 244);;
+  box-shadow: inset 0 0 0px 9999px rgb(244, 244, 244);
+}
+
+.button{
+  width: 440px;
+  height: 70px;
+  border: 0;
+  margin-top: 10px;
+  margin-bottom: 45px;
+  background-color: rgb(41, 187, 41);
   color: white;
+  outline: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+.listButton{
+  position: relative;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+  border: 0;
+  background-color: rgb(41, 187, 41);
+  color: white;
+  outline: none;
+  float: right;
+  border-radius: 50%;
+  cursor: pointer;
+}
+#signOutButton{
+  position: relative;
+  border: 0;
+  margin-right: 8px;
+  background-color: rgb(41, 187, 41);
+  color: white;
+  outline: none;
+  font-size: 12px;
+  float: right;
+  padding: 6px;
+  top: -76px;
+  cursor: pointer;
+}
+#addButton{
+  background-color: rgb(41, 187, 41);
+  color: white;
+  border: 0px;
+  font-size: 16px;
+  padding: 10px;
+  margin: 20px;
+  outline: 0;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+#notRegistered{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: rgb(187, 187, 187);
+}
+#registerNewLink, #loginPage{
+  color: rgb(80, 171, 80);
+  text-decoration: none;
+}
+#registerNewLink:hover, #loginPage:hover{
+  color: rgb(26, 136, 26);
+  text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.errorMessage{
+  color: rgb(157, 34, 34);
+  margin: 20px;
+}
+
+#addTodoField{
+  width: 400px;
+  height: 50px;
+  border: 0;  
+  outline: none;
+  border-bottom: 1px solid rgb(41, 187, 41);
+  margin-left: 20px;
+  font-size: 16px;
+}
+.listContent{
+
+  word-wrap:break-word;
+  font-family: 'Indie Flower', cursive;
+  margin: 10px;
+  border-bottom: 1px dotted rgb(41, 187, 41);
+}
+#loggedInText{
+  padding: 10px;
+  position: relative;
+  top: -60px;
+  color: rgb(187, 187, 187);
+  font-size: 12px;
+}
+#loggedIn{
+  position: relative;
+  left: -10px;
+  top: -60px;
+  color: rgb(41, 187, 41);
+  font-size: 12px;
+}
+#errorM{
+  color: rgb(157, 34, 34);
+}
+
+.registerDone{
+  color: rgb(41, 187, 41);
+  text-decoration: none;
+}
+.registerDone:hover{
+  color: rgb(26, 136, 26);
+  text-decoration: none;
 }

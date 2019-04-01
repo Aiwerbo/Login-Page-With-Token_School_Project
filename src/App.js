@@ -270,7 +270,7 @@ class Profile extends PureComponent {
       <label id="loggedInText">Inloggad som:</label><br/>
       <label id="loggedIn">{this.state.email}</label>
       <button id="signOutButton" onClick={this.logOut}>Logga ut</button><br/>
-      <input id="addTodoField" placeholder="Lägg till todo." ref="todoText" type="text" onChange={this.todoText}></input><br/>
+      <input id="addTodoField" placeholder="Lägg till todo." ref="todoText" maxLength="100" type="text" onChange={this.todoText}></input><br/>
       <button id="addButton" onClick={this.addTodo}>Lägg till todo</button>
       <label id="errorM">{this.state.errorMessage}</label>
       </div>

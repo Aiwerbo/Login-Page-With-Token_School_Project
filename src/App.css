@@ -44,7 +44,7 @@ ul{
   margin: 0;
   
   
-  width: 500px;
+  width: 540px;
   height: 250px;
   top: 10%;
   left: 50%;
@@ -64,7 +64,7 @@ ul{
 #contentContainer{
   position: absolute;
   height: 400px;
-  width: 500px;
+  width: 540px;
   
   overflow: auto;
   background-color: white;
@@ -173,7 +173,7 @@ ul{
   font-size: 16px;
 }
 .listContent{
-
+  font-size: 24px;
   word-wrap:break-word;
   font-family: 'Indie Flower', cursive;
   margin: 10px;

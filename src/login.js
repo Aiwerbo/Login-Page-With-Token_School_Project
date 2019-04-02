@@ -11,9 +11,7 @@ class Login extends PureComponent{
   constructor(props){
     super(props);
     this.state = ({email: '', password: '', isLoggedIn: false, errorMessage: ''});
-    this.onLogin = this.onLogin.bind(this); 
-    this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onChangePassword = this.onChangePassword.bind(this);
+
   }
 
 componentDidMount(){
@@ -28,7 +26,7 @@ componentWillUnmount(){
 }
   
 
-  onLogin(e){
+  onLogin = (e) => {
     
     e.preventDefault();
 
@@ -61,10 +59,10 @@ componentWillUnmount(){
     
   }
 
-  onChangeEmail(e){
+  onChangeEmail = (e) => {
     this.setState({email: e.target.value, errorMessage: ''})
   }
-  onChangePassword(e){
+  onChangePassword = (e) => {
     this.setState({password: e.target.value, errorMessage: ''})
   }
 

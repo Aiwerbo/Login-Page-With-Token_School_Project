@@ -10,12 +10,10 @@ class Register extends PureComponent {
   constructor(props){
     super(props);
     this.state = {email: '', password: '', isRegistered: false, errorMessage: '', registeredMessage: ''}
-    this.newAccount = this.newAccount.bind(this)
-    this.newEmail = this.newEmail.bind(this);
-    this.newPassword = this.newPassword.bind(this);
+
   }
  
-  newAccount(e){
+  newAccount = (e) => {
     e.preventDefault();
    axios.post(API_ROOT + '/register', { email: this.state.email, password: this.state.password })
      .then((response) =>  {
@@ -48,11 +46,11 @@ class Register extends PureComponent {
    this.setState({isRegistered: false})
  }
  
-  newEmail(e){
+  newEmail = (e) => {
    this.setState({email: e.target.value, errorMessage: ''});
   }
  
-  newPassword(e){
+  newPassword = (e) => {
     this.setState({password: e.target.value, errorMessage: ''});
   }
  

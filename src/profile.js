@@ -13,11 +13,7 @@ class Profile extends PureComponent {
   constructor(props){
     super(props);
     this.state = {todos: [], email: null, newTodo: '', token: token$.value, errorMessage: ''}
-    this.logOut = this.logOut.bind(this);
-    this.addTodo = this.addTodo.bind(this);
-    this.todoText =  this.todoText.bind(this)
-    this.renderList = this.renderList.bind(this)
-    this.deleteTodo = this.deleteTodo.bind(this);
+   
   }
 
   componentDidMount(){
@@ -33,7 +29,7 @@ class Profile extends PureComponent {
     }
 
     const decoded = jwt.decode(this.state.token);
-    console.log(decoded)
+  
     this.setState({email: decoded.email});
 
     axios.get(API_ROOT + '/todos', {
@@ -42,9 +38,10 @@ class Profile extends PureComponent {
     .then((response) => {
       if(response.status === 200){
         const data = response.data.todos;
+       
         this.setState({todos: data})
       }
-      console.log(response)
+
     })
     .catch(error =>{
       if (axios.isCancel(error)) {
@@ -59,18 +56,16 @@ class Profile extends PureComponent {
 
   }
 
-  renderList(data){
-    console.log(data)
-    
-    return(
+  renderList = (data) => {
 
+      return(
+
+        <li key={data.id} className="listContent">{data.content}<button className="listButton" data-id={data.id} onClick={this.deleteTodo}>x</button></li>
       
-      
-      <li key={data.id} className="listContent">{data.content}<button className="listButton" data-id={data.id} onClick={this.deleteTodo}>x</button></li>
-      
+      )
+
+    }
     
-    )
-  }
 
   componentWillUnmount() {
     this.subscription.unsubscribe();
@@ -80,12 +75,12 @@ class Profile extends PureComponent {
     }
   }
 
-  logOut(){
+  logOut = () => {
     //this.setState({isLoggedIn: false});
      updateToken(null);
      
    }
-   addTodo(e){
+   addTodo = (e) => {
     axios.post(API_ROOT + '/todos', {content: this.state.newTodo}, {headers: {
       Authorization: 'Bearer ' + token$.value}, cancelToken: this.source.token})
       .then(response => {
@@ -101,7 +96,7 @@ class Profile extends PureComponent {
                 const data = response.data.todos;
                 this.setState({todos: data})
               }
-              console.log(response)
+   
             })
           
         }
@@ -119,19 +114,23 @@ class Profile extends PureComponent {
           this.setState({errorMessage: 'Du har blivit utloggad på grund av inaktivitet. Logga ut och logga in igen.'});
           
         }
+        if(error.response && error.response.status === 404){
+          this.setState({errorMessage: 'Sidan finns inte. Försök igen'});
+          
+        }
       });
 
 
    }
 
-   deleteTodo(e){
+   deleteTodo = (e) => {
 
     const data = this.state.todos;
 
     const id = e.target.dataset.id;
     axios.delete(API_ROOT + '/todos/' + id, {headers: {Authorization: 'Bearer ' + token$.value}, })
     .then(response => {
-      console.log(response)
+    
       if(response.status === 204){
         const index = data.findIndex(x => x.id === id);
         if(index >= 0){
@@ -151,20 +150,34 @@ class Profile extends PureComponent {
     
    }
 
-   todoText(e){
+   todoText = (e) => {
     this.setState({newTodo: e.target.value, errorMessage: ''})
    }
 
   render(){
+   
     const listData = this.state.todos.map(this.renderList).reverse();
+    console.log(listData)
+
+    let emptyList;
+
+      if(listData.length < 1){
+      
+        emptyList =  <li style={{fontFamily: 'Indie Flower, cursive', textAlign: 'center', fontSize: '24px' }}>Listan är tom</li>
+      }
+      else(
+        emptyList = listData
+      )
+    
+    
 
     if(this.state.token === null){
    
       return <Redirect to="/" />
     } 
 
-
-    console.log(this.state.todos)
+  
+   
     return(
       <>
       <Helmet><title>{'Todo for: ' + this.state.email} </title></Helmet>
@@ -185,7 +198,8 @@ class Profile extends PureComponent {
       
       <div id="contentContainer">
       
-      <ul>{listData}</ul>
+      <ul>{emptyList}</ul>
+      
       </div>
       </div>
       </div>

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import {Helmet} from "react-helmet";
 import {token$} from './store.js';
 import { updateToken } from './store.js'

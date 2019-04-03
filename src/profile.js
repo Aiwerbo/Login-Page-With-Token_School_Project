@@ -140,7 +140,7 @@ class Profile extends PureComponent {
     const data = this.state.todos;
 
     const id = e.target.dataset.id;
-    axios.delete(API_ROOT + '/todos/' + id, {headers: {Authorization: 'Bearer ' + token$.value}, })
+    axios.delete(API_ROOT + '/todos/' + id, {headers: {Authorization: 'Bearer ' + token$.value}, cancelToken: this.source.token})
     .then(response => {
     
       if(response.status === 204){

@@ -4,7 +4,7 @@ export const token$ = new BehaviorSubject(window.localStorage.getItem('token') |
 
 
 export function updateToken(newToken) {
-  console.log(token$)
+
   if(!newToken){
     window.localStorage.removeItem('token');
   }

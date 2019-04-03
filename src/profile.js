@@ -76,7 +76,7 @@ class Profile extends PureComponent {
   }
 
   logOut = () => {
-    //this.setState({isLoggedIn: false});
+    
      updateToken(null);
      
    }
@@ -170,14 +170,14 @@ class Profile extends PureComponent {
    
     const listData = this.state.todos.map(this.renderList).reverse();
 
-    let emptyList;
+    let list;
 
       if(listData.length < 1){
       
-        emptyList =  <li style={{fontFamily: 'Indie Flower, cursive', textAlign: 'center', fontSize: '24px' }}>Listan är tom</li>
+        list =  <li style={{fontFamily: 'Indie Flower, cursive', textAlign: 'center', fontSize: '24px' }}>Har du verkligen inget att göra idag?</li>
       }
       else(
-        emptyList = listData
+        list = listData
       )
     
     
@@ -209,7 +209,7 @@ class Profile extends PureComponent {
       
       <div id="contentContainer">
       
-      <ul>{emptyList}</ul>
+      <ul>{list}</ul>
       
       </div>
       </div>

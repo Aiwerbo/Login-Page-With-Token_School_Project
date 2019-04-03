@@ -65,7 +65,8 @@ ul{
 
 #contentContainer{
   position: absolute;
-  height: 400px;
+  
+  height: 350px;
   width: 540px;
   
   overflow: auto;
@@ -111,7 +112,7 @@ ul{
 }
 .listButton{
   position: relative;
-  top: 2px;
+  top: 12px;
   width: 20px;
   height: 20px;
   border: 0;
@@ -178,7 +179,7 @@ ul{
   font-size: 24px;
   word-wrap:break-word;
   font-family: 'Indie Flower', cursive;
-  margin: 10px;
+  margin: 5px;
   border-bottom: 1px dotted rgb(41, 187, 41);
 }
 #loggedInText{
@@ -214,4 +215,23 @@ ul{
 .registerDone:hover{
   color: rgb(26, 136, 26);
   text-decoration: none;
+}
+
+@media screen and (max-height: 670px) {
+  #profileContainer {
+  position: absolute;
+  width: 450px;
+  height: 260px;
+  top: 50%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  }
+  #contentContainer{
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    height: 260px;
+    width: 400px;
+  }
 }

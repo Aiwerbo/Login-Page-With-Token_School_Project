@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import {Helmet} from "react-helmet";
 import {token$} from './store.js';
 import { updateToken } from './store.js'
@@ -200,7 +200,8 @@ class Profile extends PureComponent {
       <h2 id="todoHeader">Min Todo-lista</h2>
       
       <label id="loggedInText">Inloggad som:</label><br/>
-      <label id="loggedIn">{this.state.email}</label>
+      <label className="loggedIn">{this.state.email}</label><br/>
+      <Link className="loggedIn" id="registerNewUser" to="/register" onClick={this.logOut}>Registrera ny användare</Link>
       <button id="signOutButton" onClick={this.logOut}>Logga ut</button><br/>
       <input id="addTodoField" placeholder="Lägg till todo." ref="todoText" maxLength="100" type="text" onChange={this.todoText}></input><br/>
       <button id="addButton" onClick={this.addTodo}>Lägg till todo</button>

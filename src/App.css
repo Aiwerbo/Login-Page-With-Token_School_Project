@@ -186,13 +186,21 @@ ul{
   color: rgb(187, 187, 187);
   font-size: 12px;
 }
-#loggedIn{
+.loggedIn{
   position: relative;
-  left: -10px;
+  left: 10px;
   top: -60px;
   color: rgb(41, 187, 41);
   font-size: 12px;
 }
+#registerNewUser{
+  text-decoration: none;
+}
+#registerNewUser:hover{
+  color: rgb(26, 136, 26);
+}
+
+
 #errorM{
   color: rgb(157, 34, 34);
 }

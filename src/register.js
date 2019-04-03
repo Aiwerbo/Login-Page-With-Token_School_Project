@@ -68,7 +68,7 @@ class Register extends PureComponent {
        <input className="inputField" onChange={this.newPassword} type="password" placeholder="lösenord"></input>
        <input className="button" type="submit" value="Registrera"></input>
        </form>
-       <Link id="loginPage" to="/">Login page</Link>
+       <Link id="loginPage" to="/">Logga in.</Link>
        <p className="errorMessage">{this.state.errorMessage}</p>
        <Link to="/" className="registerDone">{this.state.registeredMessage}</Link>
        </div>

@@ -84,8 +84,10 @@ class Profile extends PureComponent {
     axios.post(API_ROOT + '/todos', {content: this.state.newTodo}, {headers: {
       Authorization: 'Bearer ' + token$.value}, cancelToken: this.source.token})
       .then(response => {
+
         this.setState({newTodo: ''})
         if(response.status === 201){
+          
           this.refs.todoText.value = '';
 
           axios.get(API_ROOT + '/todos', {
@@ -98,6 +100,16 @@ class Profile extends PureComponent {
               }
    
             })
+        .catch((error) => {
+          if (axios.isCancel(error)) {
+            return;
+          }
+
+          if(error.response && error.response.status){
+            this.setState({errorMessage: 'Det verkar inte gå att hämta din lista, Logga ut och logga in igen.'});
+            
+          }
+        })
           
         }
       
@@ -157,7 +169,6 @@ class Profile extends PureComponent {
   render(){
    
     const listData = this.state.todos.map(this.renderList).reverse();
-    console.log(listData)
 
     let emptyList;
 

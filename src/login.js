@@ -30,14 +30,17 @@ componentWillUnmount(){
     
     e.preventDefault();
 
-    axios.post(API_ROOT + '/auth', { email: this.state.email, password: this.state.password }, {headers: {}, cancelToken: this.source.token })
-
+    axios.post(API_ROOT + '/auth', { email: this.state.email, password: this.state.password }, {headers: {"Content-Type": "application/json"}, cancelToken: this.source.token })
+   
     .then((response) =>  {
-     
 
-      const token = response.data.token;
+      if(response.status === 200){
+        const token = response.data.token;
       updateToken(token);
       this.setState({isLoggedIn: true})
+
+      }
+      
     
     })
     .catch(error => {

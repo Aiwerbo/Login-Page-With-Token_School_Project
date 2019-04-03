@@ -9,17 +9,17 @@ class Register extends PureComponent {
 
   constructor(props){
     super(props);
-    this.state = {email: '', password: '', isRegistered: false, errorMessage: '', registeredMessage: ''}
+    this.state = {email: '', password: '', errorMessage: '', registeredMessage: ''}
 
   }
  
   newAccount = (e) => {
     e.preventDefault();
-   axios.post(API_ROOT + '/register', { email: this.state.email, password: this.state.password })
+   axios.post(API_ROOT + '/register', { email: this.state.email, password: this.state.password }, {headers: {"Content-Type": "application/json"}, cancelToken: this.source.token })
      .then((response) =>  {
-       console.log(response)
+
        if(response.status === 201){
-         this.setState({isRegistered: true, registeredMessage: 'Registrering klar. Logga in.'})
+         this.setState({registeredMessage: 'Registrering klar. Logga in.'})
        }
      })
      .catch(error =>{
@@ -43,7 +43,7 @@ class Register extends PureComponent {
    if (this.source) {
      this.source.cancel();
    }
-   this.setState({isRegistered: false})
+
  }
  
   newEmail = (e) => {
@@ -55,11 +55,7 @@ class Register extends PureComponent {
   }
  
   render(){
-   
-   if(this.state.isRegistered === true){
-     
-     //return <Redirect to="/" />
-   }
+
  
     return(
       <>

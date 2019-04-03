@@ -8,11 +8,12 @@ import { updateToken } from './store.js'
 import './App.css';
 const API_ROOT = 'http://ec2-13-53-32-89.eu-north-1.compute.amazonaws.com:3000';
 
+
 class Profile extends PureComponent {
 
   constructor(props){
     super(props);
-    this.state = {todos: [], email: null, newTodo: '', token: token$.value, errorMessage: ''}
+    this.state = {todos: [], email: '', newTodo: '', token: token$.value, errorMessage: ''}
    
   }
 
@@ -29,7 +30,7 @@ class Profile extends PureComponent {
     }
 
     const decoded = jwt.decode(this.state.token);
-  
+
     this.setState({email: decoded.email});
 
     axios.get(API_ROOT + '/todos', {
@@ -167,9 +168,13 @@ class Profile extends PureComponent {
    }
 
   render(){
-   
-    const listData = this.state.todos.map(this.renderList).reverse();
 
+    let name = this.state.email;
+    let indexOfName = name.indexOf('@');
+    name = name.substring(0, indexOfName);
+
+    const listData = this.state.todos.map(this.renderList).reverse();
+  
     let list;
 
       if(listData.length < 1){
@@ -197,7 +202,7 @@ class Profile extends PureComponent {
       
       <div id="profileContainer">
       
-      <h2 id="todoHeader">Min Todo-lista</h2>
+      <h2 id="todoHeader">{name + 's'} Todo-lista</h2>
       
       <label id="loggedInText">Inloggad som:</label><br/>
       <label className="loggedIn">{this.state.email}</label><br/>

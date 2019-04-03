@@ -54,7 +54,9 @@ ul{
 }
 #todoHeader{
   text-align: center;
-  color: rgb(41, 187, 41);
+  position: relative;
+  top: -60px;
+  color: white;
   font-family: 'Indie Flower', cursive;
 }
 .logInHeader{
@@ -130,7 +132,7 @@ ul{
   font-size: 12px;
   float: right;
   padding: 6px;
-  top: -76px;
+  top: -103px;
   cursor: pointer;
 }
 #addButton{
@@ -182,14 +184,14 @@ ul{
 #loggedInText{
   padding: 10px;
   position: relative;
-  top: -60px;
+  top: -70px;
   color: rgb(187, 187, 187);
   font-size: 12px;
 }
 .loggedIn{
   position: relative;
   left: 10px;
-  top: -60px;
+  top: -70px;
   color: rgb(41, 187, 41);
   font-size: 12px;
 }
